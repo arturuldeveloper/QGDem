@@ -1,0 +1,558 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0064)https://www.shadedrelief.com/dem/dem.html?utm_source=chatgpt.com -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		
+		<meta name="generator" content="Adobe GoLive">
+		<title>DEM Manipulation</title>
+	</head>
+
+	<body bgcolor="#ffffff">
+		<table width="638" border="0" cellspacing="0" cellpadding="0" cool="" gridx="16" gridy="16" height="11548" showgridx="" showgridy="" usegridx="" usegridy="">
+			<tbody><tr height="2143">
+				<td content="" csheight="2143" width="633" height="2143" colspan="3" valign="top" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="5"><b>DEM Manipulation and 3D Terrain Visualization: Techniques used by the U.S. National Park Service</b><br>
+					</font>
+					<p><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">Tom Patterson<br>
+							U.S. National Park Service<br>
+							Harpers Ferry Center<br>
+							Harpers Ferry, WV 25425-0050<br>
+						</font></p>
+					<p><font color="#ff001d" face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular">Update - April 2004: With the release of Adobe Photoshop CS (v. 8), which now includes expanded support for 16-bit data, including layering, the DEM manipulation techniques described below are much easier to accomplish. In addition, Mac OSX users can export 16-bit DEMs from Photoshop 7.0 and CS in PGM format readable by Bryce using the free CartaPGM filter developed by Pascal Lamboley and Bernhard Jenny available</font><font face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular"> <a href="http://www.reliefshading.com/software/CartaPGM/CartaPGM.html">here</a>.</font></p>
+					<p><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="4"><b>Introduction</b></font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><br>
+							<br>
+							This article discusses the graphical techniques used by the U.S. National Park Service (NPS) in manipulating Digital Elevation Models (DEMs) for the design and production of 3D landscape visualizations. Over the past five years, the NPS has relied increasingly on portraying geographic information through 3D visualizations—static images, animations, and interactive scenes—which are assumed to be more easily understood by casual visitors than more abstract two-dimensional (2D) maps and illustrations in interpreting the natural and cultural resources of the 384 units in the National Park System. The types of 3D visualizations created by the NPS include geologic block diagrams; natural science illustrations, 3D hiking maps, Heinrich Berann-style panoramas, and birds-eye views of cultural sites showing buildings, landscaping, and vegetation set on topographic models.<br>
+							<br>
+							DEMs—the term is used generically here to describe all varieties of spatially-arranged elevation data, regardless of format—comprise the digital foundation upon which all 3D landscape visualizations are based. Despite the importance of DEMs, cartographers and GIS specialists generally hesitate to manipulate DEMs for enhancing 3D visualizations—in contrast to their willingness to modify vector data routinely to enhance 2D maps. Manipulations to DEMs are usually made only to edit imperfect data, such as systematic banding and discrepancies in matching edges. This hands-off approach to DEMs may have several causes: the lingering belief that DEMs, like the landscapes they represent, are largely immutable; well intentioned respect for maintaining the integrity of data created by others; and unfamiliarity with the necessary software applications and techniques, and the concept of DEM manipulation itself.<br>
+							<br>
+						</font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="4"><b>Why manipulate DEMs?<br>
+							</b></font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><br>
+							Practical reasons abound for manipulating DEMs beyond routine editing of cosmetic data imperfections. As in all cartographic presentation, geographic reality and graphic reality are often at cross purposes. Just as vector data must be simplified to be legible on a 2D map, DEMs must be generalized at reduced scales to avoid creating topography that looks more like a noisy graphical texture than a 3D landscape. This problem can be ameliorated with resolution bumping, a DEM manipulation technique that yields legible small-scale 3D topography in rugged high mountains without sacrificing detail. On the other extreme, small topographic features whose is importance is disproportionate to their size can be given greater emphasis by using selective vertical exaggeration. For example, Puu Oo volcano on the island of Hawaii has a surface area of only 10 hectares but has sheathed 105 square kilometers of Hawaii with lava since it began continually erupting in 1983. With selective vertical exaggeration, Puu Oo could be exaggerated in height and made more discernable next to its dominant neighbor, Mauna Loa, whose mass is greater than any other solitary mountain in the World.<br>
+							<br>
+							The most dramatic DEM manipulation techniques may be those that depict geologic processes. Starting with a DEM of an existing landscape, the user can either reverse-engineer topography to portray an earlier stage of landscape development or project it into the future. Like virtual modeling clay, DEMs are pliable; they allow users to create an almost unlimited variety of derivative or even entirely new landscapes. The challenge when altering the topographic morphology of DEMs is to do so with the control and precision required for geographic visualization.<br>
+							<br>
+						</font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="4"><b>Approaches to DEM manipulation<br>
+							</b></font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><br>
+							The software used to manipulate DEMs can generally be categorized as either cartographic/GIS and graphic. Although the applications in each category have similarities (such as their underlying algorithms), they are used by entirely different professional cultures to produce different products. GIS applications, as most readers of this text are well aware, appropriately emphasize spatial analysis and accuracy, but the relatively staid 3D graphical capabilities of these applications provide few tools for creatively manipulating DEMs. By contrast, graphical 3D software applications generally contain a plethora of tools, some with real-time interactivity, for manipulating elevation data to create eye-catching special effects. The landscapes yielded by graphical software are used mostly for entertainment (computer games and movie special effects), fine art, and fantasy/science fiction pursuits. Despite these imaginative ends, graphical 3D software tends to have limited DEM import capabilities. Imaginary fractally-generated terrains, some stunningly realistic, are the landscape type of choice (Musgrave 1998). Geographic accuracy, if addressed at all, is often an inconvenient afterthought.<br>
+							<br>
+							The NPS approach to DEM manipulation bridges the gap between the cartographic/GIS and graphic 3D cultures. 3D visualizations are created with Corel Bryce 4.1, a consumer-oriented, landscape rendering application most famous for its unconventional Kai Krause-inspired graphical user interface (www.corel.com). Because Bryce does not import geo-coded data, helper utilities and a roundabout workaround procedure are used to bring large-format DEMs into the program. However, once the DEM is imported, a powerful suite of 3D special effects exists; the interface is easy-to-use, and the rendering engine yields exceptionally high quality ray-traced output in the form of raster images, animations, or QuickTime Virtual Reality scenes. Although Bryce contains a fascinating terrain editor, which allows DEMs to be manipulated interactively, its cramped interface and inability to edit precisely defined geographic areas limits effectiveness for making professional landscape visualizations (Webster 2001).<br>
+							<br>
+						</font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="4"><b>Manipulating DEMs in Photoshop<br>
+							</b></font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><br>
+							To overcome the shortcomings of Bryce’s terrain editor, the NPS uses Adobe Photoshop (www.adobe.com), the popular image editing application, to manipulate DEMs before importing them into Bryce. Because the NPS already uses Photoshop as a go-between application for importing large format DEMs into Bryce, making DEM manipulations in Photoshop makes practical sense. As raw binary files DEMs can be opened in Photoshop as 16-bit grayscale raster images containing 65,536 levels of height information: with 16-bit vertical resolution you can depict topographic surfaces with near-perfect smoothness. (Contrast this with the 256 elevation levels available in 8-bit DEMs, which often yields topography with stair-stepped surfaces.) BSmooth (www.bsmooth.de), a shareware utility, is then used to convert the 16-bit grayscale DEM from Photoshop format (.psd) to a quadratic-sized file in Portable Grayscale Map format (.pgm), which Bryce can then import.<br>
+							<br>
+							A DEM opened in Photoshop appears as a ghosted grayscale image, similar to an X-ray, with light colored pixels representing high elevations and dark pixels lowlands. Although a grayscale DEM in Photoshop looks nothing like the 3D surface it will eventually become when rendered in Bryce (Figure 1), that it can be seen in pictorial form at all is a huge benefit when making manipulations. Changes can actually be seen, as compared to the original DEM, a text file of numbers that defies visualization.<br>
+						</font></p>
+				</td>
+				<td width="1" height="2451" rowspan="8"></td>
+				<td width="3" height="6689" rowspan="40"></td>
+				<td width="1" height="2143"><spacer type="block" width="1" height="2143"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="3" height="10"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="3" height="10"></td>
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="3"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="225">
+				<td width="630" height="225" colspan="2" valign="top" align="left" xpos="0"><img height="225" width="630" src="./DEM Manipulation_files/primitives.jpg"></td>
+				<td width="3" height="288" rowspan="5"></td>
+				<td width="1" height="225"><spacer type="block" width="1" height="225"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="33">
+				<td content="" csheight="33" width="630" height="33" colspan="2" valign="top" align="left" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="2"><b>Fig. 1.</b> 3D geometric objects (top row) look considerably different from the grayscale “DEMs” in Photoshop format (bottom row) from which they were extruded.<br>
+					</font></td>
+				<td width="1" height="33"><spacer type="block" width="1" height="33"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="1514">
+				<td content="" csheight="1514" width="634" height="1514" colspan="4" valign="top" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">Cartographers can use Photoshop’s image editing and selection tools, more or less, to edit a grayscale DEM just like any other image. Basic image transformations—cropping, downsampling (decreasing the resolution), rotating, and scaling—behave in the usual manner. Applying Gaussian blur to a DEM results in a smooth generalized surface, while the noise filter adds roughness, and lightening or darkening the image either raises or lowers topography respectively—no surprises there. However, because they are data files, grayscale DEMs sometimes respond unexpectedly or detrimentally to Photoshop manipulations that we are accustomed to using with typical 2D images. For example, the median filter, enormously useful for generalizing 2D shaded relief, but when applied to a DEM it yields terrain with a creased surface that looks like crinkled paper (Patterson 2000). The Unsharp Mask filter, another stalwart of 2D shaded relief editing, produces unsightly needle-like artifacts along prominent ridge lines and drainages.<br>
+						<br>
+						Notable disadvantages to manipulating DEMs in Photoshop exist. Previewing an edited DEM in 3D involves exporting the DEM from Photoshop, importing it into Bryce, and then rendering the scene—a time consuming process when making repeated subtle edits. More problematic is Photoshop’s limited functionality when using 16-bit images as opposed to “normal” 8-bit images. Most items in the toolbar are disabled as are most filters and the layers palette—16-bit functionality is akin to going back to Photoshop version 1.0.<br>
+						<br>
+						Despite Photoshop’s diminished 16-bit functionality, it nevertheless contains all the tools needed to manipulate DEMs with the accuracy required for visualization. Clever workarounds, however, are often necessary to perform routine functions. For example, hard-edged and feathered selections can be used on 16-bit DEMs despite the fact that the Magic Wand and Color Range selection tools are disabled in 16-bit mode. Using either of these selection tools requires duplicating a 16-bit DEM file and saving it as an 8-bit proxy to be used only for making selections. The selection boundaries can then be dragged and dropped from the 8-bit file to the 16-bit file. (Hint: temporarily inverting an interior selection allows it to be precisely registered to a corner when dragged into the 16 bit image.) Cartographers can use similar techniques to import selections from rasterized vector geo-data.<br>
+						<br>
+						Photoshop’s painting tools are also disabled in 16-bit mode. However, the Rubber Stamp tool, which is enabled, is an effective substitute for the Airbrush tool for painting on DEM surfaces. Data can be sampled and cloned between two open 16-bit Photoshop files. By filling a proxy 16-bit file entirely with black or white and then using the rubber stamp with a soft brush and the blending opacity set to a low value, black or white tones can subtly be transferred from the proxy image onto the DEM, lowering or raising elevations respectively.<br>
+						<br>
+						Photoshop can be used in innumerable ways to manipulate DEMs to enhance 3D landscape visualization. The following emphasize creating static images of 3D landscapes to show some practical techniques used by the NPS:<br>
+						<br>
+					</font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="4"><b>Generalization</b></font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><b><br>
+						</b></font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><br>
+						Downsampling means to decrease the resolution or size via the Image Size dialog. Downsampling grayscale DEMs in Photoshop results in more generalized landscape surfaces. For example, a DEM downsampled from 1024 x 1024 pixels to 512 x 512 pixels will have half as much detail as the original and a smoother appearance. In the Preferences dialog, Photoshop offers three interpolation methods for calculating pixel values when downsampling or otherwise transforming images. In general, bicubic interpolation (the default) works best for straight downsampling. If the DEM were also to be rotated, however, "nearest neighbor" interpolation would be a better choice, because this faster interpolation eschews anti aliasing, thus preserving crisp-edged pixels at the margins of the DEM. Regardless of which interpolation method is used, upsampling, the opposite procedure of downsampling, which adds pixels to an image, should generally be avoided. Upsampling only increases the file size (in MB) without increasing the discernable detail.</font><br>
+					<br>
+					<font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">Alternatively, applying the Gaussian blur filter to a DEM, a method that does not decrease the file size, achieves extremely smooth generalization. The smoothing effects of Gaussian blur filtering behave differently than downsampling; experimentation is required to achieve comparable levels of generalization between the two techniques.<br>
+						<br>
+						Although generalization is most often applied globally throughout a DEM, it can also be applied in graduated amounts to achieve subtle visual effects. For example, increasing generalization (thereby decreasing visible detail) from foreground to background on a DEM creates the optical illusion of depth when it is viewed in 3D (Figure 2). Foreground to background generalization also hastens rendering time, an important consideration when creating interactive environments (Moore 1999). Graduated generalization can also be applied to the vertical axis of a DEM, creating scenes with more visible detail at higher elevations than at lower elevations. This technique mimics the aerial perspective effect, a visualization technique pioneered by Eduard Imhof, which accounts for the veiling effects of atmospheric haze. When aerial perspective is employed, highlands, which are theoretically closer to the viewer, are depicted with greater detail and contrast than the lowlands further away, enhancing three dimensionality (Imhof 1982).<br>
+					</font>
+					<p><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">Finally, greater amounts of resolution can be applied selectively to small but otherwise important topographic features on a DEM, such as Puu Oo, Hawaii mentioned earlier. Detailed objects tend to attract the viewer’s attention more readily than generalized objects (Garfield 1970), a phenomenon that can be exploited beneficially for 3D landscape visualization.<br>
+						</font></p>
+				</td>
+				<td width="1" height="1514"><spacer type="block" width="1" height="1514"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="4" height="668" colspan="2" rowspan="15"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="189">
+				<td width="630" height="189" colspan="2" valign="top" align="left" xpos="0"><img height="189" width="630" src="./DEM Manipulation_files/resolution.jpg"></td>
+				<td width="1" height="189"><spacer type="block" width="1" height="189"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="46">
+				<td content="" csheight="46" width="630" height="46" colspan="2" valign="top" align="left" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="2"><b>Fig. 2.</b> Intra DEM resolution variation, La Sal Mountains, Utah: (left) Resolution gradually decreases fivefold from front to back within the scene. (middle) Resolution decreases fivefold from highlands to lowlands. (right) Combination: resolution decreases from front to back and from highlands to lowlands.<br>
+					</font></td>
+				<td width="1" height="46"><spacer type="block" width="1" height="46"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="112">
+				<td content="" csheight="112" width="630" height="112" colspan="2" valign="top" align="left" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="4"><b>Resolution bumping<br>
+						</b></font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><br>
+						Resolution bumping is a generalization technique for manipulating GTOPO30 and other small-scale DEMs. The technique alters digital elevation surfaces so that rugged, high mountains are more legible and look more natural as compared to unmodified data (Figure 3). </font></td>
+				<td width="1" height="112"><spacer type="block" width="1" height="112"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="145">
+				<td width="630" height="145" colspan="2" valign="top" align="left" xpos="0"><img height="145" width="630" src="./DEM Manipulation_files/resolution_bump.jpg"></td>
+				<td width="1" height="145"><spacer type="block" width="1" height="145"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="76">
+				<td content="" csheight="76" width="630" height="76" colspan="2" valign="top" align="left" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="2"><b>Fig. 3.</b> Resolution bumping: (left) A 3D scene of the western Alps created from 1 km GTOPO30 elevation data; the detailed terrain appears choppy when vertical exaggeration is applied. (middle) The data downsampled to 8 km resolution. Although excessively generalized, major landforms now appear distinctly. (right) A scene created from 1 km and 8 km elevation data blended at a 4:6 ratio. This treatment etches a hint of topographic detail onto generalized major landforms.<br>
+					</font></td>
+				<td width="1" height="76"><spacer type="block" width="1" height="76"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="1048">
+				<td content="" csheight="1048" width="634" height="1048" colspan="4" valign="top" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">When used for 3D visualizations, unmodified GTOPO30 data typically produces mountains with a choppy appearance. Vertical exaggeration, which is a graphical necessity when making small-scale landscape visualizations, exacerbates the choppiness. Especially problematic are glaciated northern mountains comprised of tightly packed ridges and valleys—for example, the Coast Ranges of British Columbia and the Alps, which often appear as an irregular texture rather than as recognizable topography. Solitary high peaks with small surface area, such as Mount Shasta or the Matterhorn, spike upwards like the Eiffel Tower. Used in combination, topographic detail, vertical exaggeration, and small-scale presentation are the enemies of legible mountain depiction.<br>
+						<br>
+						Downsampling GTOPO30 data to a sparser resolution alleviates the problems outlined above. Generalized data is better for depicting patterns within mountain ranges and is more tolerant of vertical exaggeration. Downsampling elevation data, however, introduces new problems that are arguably worse than the now corrected original problems. Knife-edged mountain ridges appear excessively rounded, like the vacuum-formed plastic relief maps used in schools, and simplified valley bottoms are prone to misregistration with drainages.<br>
+						<br>
+						The idea behind resolution bumping is simple: merging low-resolution and high-resolution GTOPO30 data of the same area produces hybrid data that combine the best characteristics and minimize the problems found in the originals. Two copies of a GTOPO30 file are used, one high resolution and the other downsampled to a lower resolution. These files can then be blended in Photoshop by a proportional amount that is controlled by the user. This technique yields a new grayscale DEM that, if merged in the right proportions, combines the readability of the downsampled data with all the detail one expects to find in mountainous terrain—without the graphical noise. Resolution bumping in effect "bumps" or etches a suggestion of topographical detail onto generalized topographic surfaces. The resolution-bumped data creates an elevated base in mountainous regions, upon which individual mountains, with diminished vertical scaling, project upwards (Patterson 2001).<br>
+						<br>
+					</font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="4"><b>Height manipulation<br>
+						</b></font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><br>
+						Lightening or darkening a DEM with Photoshop’s image adjustment tools (levels, curves, brightness/contrast) raises or lowers surfaces respectively when the DEM is later rendered in 3D. This technique can be used to modify vertical exaggeration globally over an entire DEM or, more interestingly, for selected topographic features. For example, a mountain hosting a ski area could be exaggerated in height above its surroundings (for ski area maps, bigger is better) by using the Lasso tool to draw a selection boundary with a feathered edge around the mountain and lightening the area within the space.<br>
+						<br>
+						Going one step further, to apply lightening and darkening within selections can create simple topographic features. A volcanic cinder cone can be created by drawing a circular selection with a feathered edge (again with the Lasso tool) and lightening the area within, forming a cone-shaped hill when the DEM is extruded in 3D. Drawing the circular selection with a slightly irregular shape avoids excessive symmetry and gives the cone a more realistic appearance. Lastly, by contracting the initial circular selection by several pixels and applying a smaller amount of darkening, the summit is depressed (see Figure 7, left image).<br>
+						<br>
+						Glaciers can be depicted by manipulating elevation on a duplicated DEM, positioned precisely below the original unaltered DEM in Bryce. In Photoshop, on the bottom DEM an imported selection boundary representing the glacier’s extent is drawn or imported and filled with lighter pixels. Using a feathered selection boundary creates a domed effect when the glacier is extruded in Bryce. By increasing the bottom DEM’s vertical exaggeration and lowering its position in Bryce, the virtual glacier will protrude through the top DEM, neatly intersecting the valley walls (Figure 4).<br>
+					</font></td>
+				<td width="1" height="1048"><spacer type="block" width="1" height="1048"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="4" height="1008" colspan="2" rowspan="15"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="320">
+				<td width="630" height="320" colspan="2" valign="top" align="left" xpos="0"><img height="320" width="630" src="./DEM Manipulation_files/yosemite.jpg"></td>
+				<td width="1" height="320"><spacer type="block" width="1" height="320"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="61">
+				<td content="" csheight="61" width="630" height="61" colspan="2" valign="top" align="left" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="2"><b>Fig. 4.</b> (right) Yosemite Valley circa 20,000 B.P. The glacier was created by using two DEMs (left), one placed on top of the other in Bryce. The bottom DEM containing the glacier bulge was extruded through the top DEM of today’s landscape. Click <a href="https://www.shadedrelief.com/dem/yosemite.html" target="_blank">here</a> to watch a Quicktime animation (924k) of the glacier retreating from Yosemite Valley.<br>
+					</font></td>
+				<td width="1" height="61"><spacer type="block" width="1" height="61"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="199">
+				<td content="" csheight="199" width="630" height="199" colspan="2" valign="top" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">Lava flows can be similarly developed, but with harder edges and less vertical exaggeration applied. As a final touch, a rough a‘a lava surface can be simulated with a light application of the noise filter.<br>
+						<br>
+						Taking elevation manipulations to the extreme, you can apply solid black on a DEM to form block diagrams and cut-away views. Black represents the lowest elevation value. When applied to a selected portion of a grayscale DEM it flattens and lowers the topography to base level—the digital equivalent of a peneplain. The bottommost elevation data can then be clipped from a DEM when rendered in 3D. This technique allows selected chunks of a DEM to be cut away, making cross-sectional views or revealing hidden features beneath the surface (Figure 5).<br>
+					</font></td>
+				<td width="1" height="199"><spacer type="block" width="1" height="199"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="267">
+				<td width="630" height="267" colspan="2" valign="top" align="left" xpos="0"><img height="267" width="630" src="./DEM Manipulation_files/mammoth_cave.jpg_"></td>
+				<td width="1" height="267"><spacer type="block" width="1" height="267"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="61">
+				<td content="" csheight="61" width="630" height="61" colspan="2" valign="top" align="left" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="2"><b>Fig. 5.</b> This portion of a cut-away view of Mammoth Cave, Kentucky reveals 563 kilometers of passages, depicted as thin gold lines, that otherwise would be hidden beneath the surface. The green park boundary crosses the cave cut-away on the right side of the scene following the invisible surface topography. Click <a href="https://www.shadedrelief.com/dem/mammoth.html" target="_blank">here</a> to see the entire cave (476k).<br>
+					</font></td>
+				<td width="1" height="61"><spacer type="block" width="1" height="61"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="544">
+				<td content="" csheight="544" width="637" height="544" colspan="5" valign="top" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">Conversely, filling portions of DEM with white abruptly elevates these areas above their surroundings. On a large-scale DEM, filling small rectangular selections with white creates blocky shapes that, when extruded in 3D, can pass for primitive buildings (best done on flat surfaces to avoid sloped roofs). Text, point symbols, area patterns, and map linework can also be digitally embossed on topographic surfaces. This technique is potentially useful for developing tactile physical models, carved from DEMs by Computer Numerical Controlled (CNC) routers, for the visually impaired.<br>
+						<br>
+					</font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="4"><b>Elevation flattening<br>
+						</b></font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><br>
+						The Gaussian blur filter is useful for more than generalizing DEMs. The filter works by filtering pixels (elevations) through a mathematical “soft” lens controlled by a radius slider, which removes detail. When the radius is small, the DEM is merely smoothed; when the radius is excessive and/or applied repeatedly, the DEM flattens. Gaussian blur flattening, when applied to imported selection boundaries, yields benefits. For example, land/water boundaries on DEMs often do not match the same boundaries on imagery or vector linework. This creates unsightly misregistration near the shorelines when these data are later draped on DEMs. Editing the DEM solves the problem. By importing a selection of water bodies taken from the geo-imagery or rasterized vectors (using the drag-and-drop technique described previously) and applying maximum Gaussian blur, water body surfaces on the DEM become perfectly flat at their respective elevations in concert with the draped imagery. The drawback to this technique is the occasional obliteration of distinctive topography immediately bounding water bodies.<br>
+						<br>
+						Gaussian blur used in moderate amounts has other uses. Applied to a selected area on a slope, elevation-averaging produces terraces uncannily similar to those created by actual earth-moving equipment. This is a useful technique on large-scale DEMs for depicting level areas around buildings. Moreover, moderate Gaussian blur applied to road selections removes excess height data from elevated protuberances and adds data to bisected valleys, creating virtual road cuts and fills (Figure 6).</font></td>
+				<td width="1" height="544"><spacer type="block" width="1" height="544"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="7" height="329" colspan="3" rowspan="7"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="233">
+				<td width="630" height="233" colspan="2" valign="top" align="left" xpos="0"><img height="233" width="630" src="./DEM Manipulation_files/road_grading.jpg"></td>
+				<td width="1" height="233"><spacer type="block" width="1" height="233"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="46">
+				<td content="" csheight="46" width="630" height="46" colspan="2" valign="top" align="left" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="2"><b>Fig. 6.</b> Virtual road grading: (left) Gaussian blur applied to a road selection on a DEM. The black casing was added to better define the road on this illustration; it is not part of the actual DEM. (right) The modified DEM extruded in 3D.<br>
+					</font></td>
+				<td width="1" height="46"><spacer type="block" width="1" height="46"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="292">
+				<td content="" csheight="292" width="637" height="292" colspan="5" valign="top" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="4"><b>Painting</b><br>
+					</font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><br>
+						Edits may be made to DEMs by painting directly on their surfaces (using the Rubber Stamp tool as a substitute for the Airbrush tool on 16-bit DEMs). DEM painting requires manual skills similar to those used in traditional illustration and produces topography with a similar organic appearance. Painting on DEMs is hampered by the disconnect between the appearance of the 2D grayscale DEM, the item that is painted, and 3D model it will eventually become (see Figure 1). The problem is especially acute when painting subtle tones that can be difficult to see on the monochromatic surface of the DEM. Nevertheless, with practice the user can learn to paint DEMs effectively in Photoshop for depicting geological phenomena. For instance, to produce earthquake fissures and glacial crevasses simply draw a network of thin dark lines with tapered ends—an unsteady hand is, for once, a benefit. Stream erosion is another application. Sinuous dark tones applied with multiple light brush strokes, moving in an uphill direction, mimic the growth of drainage basins over time. By using progressively larger brush sizes with soft edges, drainage basins expand in volume to simulate natural erosion (Figure 7).</font></td>
+				<td width="1" height="292"><spacer type="block" width="1" height="292"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="7" height="3693" colspan="3" rowspan="47"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="191">
+				<td width="630" height="191" colspan="2" valign="top" align="left" xpos="0"><img height="191" width="488" src="./DEM Manipulation_files/DEM_painting.jpg"></td>
+				<td width="1" height="191"><spacer type="block" width="1" height="191"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="31">
+				<td content="" csheight="31" width="630" height="31" colspan="2" valign="top" align="left" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="2"><b>Fig. 7.</b> (left) A grayscale DEM in Photoshop showing a dendritic stream drainage painted on a flat tilted slope. (right) The DEM extruded and rendered in 3D.<br>
+					</font></td>
+				<td width="1" height="31"><spacer type="block" width="1" height="31"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="199">
+				<td content="" csheight="199" width="630" height="199" colspan="2" valign="top" align="left" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">Painting on a DEM to depict temporal geologic events as an image sequence or animation requires decisions about generalization that are more difficult than for single image views. Nature is often much more complicated than can be conveniently illustrated. Consider the formation of Haleakala Crater on Maui, Hawaii, which, despite its name, is an erosional feature formed over 900,000 years by coalescing amphitheater stream valleys (Figure 8). To keep this visualization comprehensible to readers, concurrent geologic events were ignored. This included sea level fluctuations that dramatically altered the shape of the island from that of today; differential erosion rates on the windward and leeward shores; post-erosional volcanic events that repeatedly filled valleys with lava; and the gradual lowering of the summit elevation by about 600 meters. In a geologic visualization, less is often more.</font></td>
+				<td width="1" height="199"><spacer type="block" width="1" height="199"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="145">
+				<td width="630" height="145" colspan="2" valign="top" align="left" xpos="0"><img height="145" width="630" src="./DEM Manipulation_files/haleakala.jpg"></td>
+				<td width="1" height="145"><spacer type="block" width="1" height="145"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="31">
+				<td content="" csheight="31" width="630" height="31" colspan="2" valign="top" align="left" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="2"><b>Fig. 8.</b> DEM painting was used to depict nascent stream erosion on ancestral Haleakala (left and middle), a dormant 3056 meter shield volcano that dominates present-day Maui, Hawaii (right).<br>
+					</font></td>
+				<td width="1" height="31"><spacer type="block" width="1" height="31"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="364">
+				<td content="" csheight="364" width="630" height="364" colspan="2" valign="top" align="left" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="4"><b>Topographic substitution<br>
+						</b></font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><br>
+						In describing hypothetical former and future landscapes, geology texts often make comparisons to analogous present-day landscapes. This concept can be applied to making geologic visualizations by cloning topography from one DEM to another in a technique known as topographic substitution. Providing that the user obtains appropriate DEMs, topographic substitution is easier than DEM painting, and, because it is based on actual DEMs, it looks convincingly realistic.<br>
+						<br>
+						Topographic substitution is accomplished with the Rubber Stamp tool by cloning data between simultaneously opened 16-bit DEMs. All of Photoshop’s blending modes can be used at varying opacities. The possibilities for mixing and matching topography to create hybrid landscapes are nearly unlimited. For example, a depiction of the primordial landscape of Virginia, the state where I now live, could be made by combining a strato volcano, cloned from a present-day DEM of Alaska, onto a DEM of the bayou country of Louisiana. Other applications could include showing the weather-worn Appalachian Mountains in their former lofty glory by grafting a DEM of today’s Rockies on top of the Appalachians; merging the Kaibab and Coconino Plateaus together to in fill the Grand Canyon; or placing Mt. Adams on top of Crater Lake to depict ancient Mt. Mazama before it erupted and imploded to form today’s caldera lake (Figure 9). </font></td>
+				<td width="1" height="364"><spacer type="block" width="1" height="364"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="152">
+				<td width="630" height="152" colspan="2" valign="top" align="left" xpos="0"><img height="152" width="630" src="./DEM Manipulation_files/crater_lake.jpg"></td>
+				<td width="1" height="152"><spacer type="block" width="1" height="152"></spacer></td>
+			</tr>
+			<tr height="61">
+				<td content="" csheight="61" width="630" height="61" colspan="2" valign="top" align="left" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="2"><b>Fig. 9.</b> Crater Lake geologic evolution: (left) Ancient Mt. Mazama was created by cloning a DEM of present-day Mt. Adams, an analogous strato volcano in the Cascade Range of Washington state, onto a DEM of present day Crater Lake (middle) upwards from the rim. (right) The breached caldera wall—the fate of many caldera lakes—was cloned from today’s DEM of Aniakchak Caldera, Alaska.<br>
+					</font></td>
+				<td width="1" height="61"><spacer type="block" width="1" height="61"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="346">
+				<td content="" csheight="346" width="630" height="346" colspan="2" valign="top" align="left" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="4"><b>Projection plane<br>
+						</b></font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><br>
+						The projection plane of DEMs—the digital datum upon which 3D terrain projects upwards—is flat. Using flat-world terrain models, however, can impede 3D visualization. On low-elevation views the landscape looks most dramatically realistic when the horizon is visible, but tall topographic features in the foreground often obscure important features deeper in the scene. Moreover, even if the entire scene were visible, the oblique viewing angle renders surface information difficult or impossible to read. Raising the viewing elevation usually solves these problems, but then the landscape looks too much like a conventional map, eliminating the advantages of 3D visualization.<br>
+						<br>
+						A better solution is to emulate the view as seen from an airplane. From high above the Earth the horizon is always visible, yet when you shift your eyes downward the view gradually becomes less oblique and more planimetric (Figure 10). This effect can be brought to 3D landscape visualization by adding convex curvature to the DEM and tilting the scene toward the viewer (Figure 11). The end result is a 3D scene that combines the best of both worlds: the foreground and middleground (where the important information resides) appear map-like, while the background appears realistic, complete with a horizon and sky (Patterson 2000).</font></td>
+				<td width="1" height="346"><spacer type="block" width="1" height="346"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="319">
+				<td width="630" height="319" colspan="2" valign="top" align="left" xpos="0"><img height="319" width="630" src="./DEM Manipulation_files/Pipe_Spring_pano.jpg"></td>
+				<td width="1" height="319"><spacer type="block" width="1" height="319"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="76">
+				<td content="" csheight="76" width="630" height="76" colspan="2" valign="top" align="left" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="2"><b>Fig. 10.</b> Pipe Spring National Monument, Arizona. The Vermilion Cliffs appear in the foreground, the first in a series of sandstone terraces that step up to the high plateaus of Utah some 300 kilometers to the north. The scene’s map-like foreground and receding horizon were created by warping the projection plane of the DEM on a convex arc and tilting it toward the viewer. Click <a href="https://www.shadedrelief.com/dem/pipe.html" target="_blank">here</a> to see a close-up view of the Pipe Spring site with 3D buildings (768k).<br>
+					</font></td>
+				<td width="1" height="76"><spacer type="block" width="1" height="76"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="130">
+				<td width="630" height="130" colspan="2" valign="top" align="left" xpos="0"><img height="130" width="463" src="./DEM Manipulation_files/convex.jpg"></td>
+				<td width="1" height="130"><spacer type="block" width="1" height="130"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="46">
+				<td content="" csheight="46" width="630" height="46" colspan="2" valign="top" align="left" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="2"><b>Fig. 11.</b> Merging a grayscale DEM (left) with a gradient representing an arc (middle) produce a convex DEM (right). 3D scenes created from convex DEMs can only be viewed from perpendicular to the convexity, which in this case would be from top to bottom or from bottom to top (see Figure 10).<br>
+					</font></td>
+				<td width="1" height="46"><spacer type="block" width="1" height="46"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="490">
+				<td content="" csheight="490" width="630" height="490" colspan="2" valign="top" align="left" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="4"><b>Conclusion</b><br>
+					</font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><br>
+						Using Photoshop to manipulate DEMs—a purpose for which the software is not specifically intended—has enabled the NPS to enhance 3D visualizations economically, ultimately benefiting park visitors by presenting landscapes and geo-spatial information in a more comprehensible manner.<br>
+						<br>
+						This review of techniques does not give detailed step-by-step instructions because space is limited and software evolves so fast that they would be out of date soon. The Photoshop techniques used by the NPS for manipulating DEMs will undoubtedly be superseded by dedicated terrain applications that allow geo-data to be edited interactively. One such promising application is Leveller (www.daylongraphics.com), which can import and export a wide range of DEM file formats, import selection boundaries, apply Photoshop-like filtering, and allow painting and cloning on DEM surfaces with real-time 3D feedback. Another promising application is World Construction Set (WCS), a professional, albeit difficult to learn, 3D landscape application that uses geo-coded data to render photo-realistic scenes complete with user-defined ecosystems and vegetation (www.3dnature.com). Using DEMs loaded into its database, WCS calculates varying amounts of topographic detail on-the-fly to depict background areas with less detail than the foreground, enhancing 3D depth and speeding rendering times. In addition, WCS uses imported vectors, called Terraffectors (tm), to etch drainages onto DEM surfaces, grade roads, and selectively modify vertical exaggeration.<br>
+						<br>
+						If Leveller and World Construction Set are any indication, the future of 3D landscape visualization looks bright. And as the cartographic and GIS communities begin to use these new tools, the techniques discussed here will, I hope, serve as a benchmark for further visual exploration.<br>
+					</font></td>
+				<td width="1" height="490"><spacer type="block" width="1" height="490"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="778">
+				<td content="" csheight="778" width="630" height="778" colspan="2" valign="top" align="left" xpos="0"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="4"><b>References</b></font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><b><br>
+						</b></font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><br>
+						<b>Literature</b><br>
+						<br>
+						Garfield, Terry. 1970. The Panorama and Reliefkarte of Heinrich Berann. Bulletin of the Society of University Cartographers. Vol. 4, No. 2, Liverpool, pp. 52-61.<br>
+						<br>
+						Imhof, Eduard. 1982. Cartographic Relief Presentation. H.J. Steward (edited by), Walter de<br>
+						Gruyter, Berlin &amp; New York, pp. 389.<br>
+						<br>
+						Moore, Kate. 1999. VRML and Java for Interactive 3D Cartography. Multimedia Cartography. Springer-Verlag, Berlin, W. Cartwright, G. Gartner, M. Peterson (edited by), pp. 205-216.<br>
+						<br>
+						Musgrave, Kenton. 1998. Procedural Fractal Terrains. Textures and Modeling: A Procedural Approach. 2nd ed. Academic Press, Cambridge, MA, D.S. Ebert (edited by), pp. 450.<br>
+						<br>
+						Patterson, Tom. 2000. A View from on High: Heinrich Berann's Panoramas and Landscape Visualization Techniques for the U.S. National Park Service. Cartographic Perspectives. No. 36, Spring 2000, pp. 38-65.<br>
+						<br>
+						Patterson, Tom. 2001. Retro Relief Shading with Adobe Photoshop and a Wacom Tablet. www.nps.gov/carto/silvretta/retro/index.html.<br>
+						<br>
+						Patterson, Tom. 2001. Resolution bumping GTOPO30 in Photoshop: How to make high mountains more legible. www.nps.gov/carto/silvretta/bumping/bumping.html.<br>
+						<br>
+						Webster, Garrick. 2001. Bryce Age. 3D World. Issue 12, Future Publishing, Ltd., Bath, U.K., pp. 48-50.<br>
+						<br>
+						<b>Software</b><br>
+						<br>
+						Adobe Photoshop. www.adobe.com<br>
+						<br>
+						Corel Bryce. www.corel.com<br>
+						<br>
+						Leveller. www.daylongraphics.com<br>
+						<br>
+						MacDEM. www.treeswallow.com<br>
+						<br>
+						World Construction Set. www.3dnature.com</font></td>
+				<td width="1" height="778"><spacer type="block" width="1" height="778"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="8">
+				<td width="630" height="8" colspan="2" valign="top" align="left" xpos="0">
+					<hr size="1" width="630">
+				</td>
+				<td width="1" height="8"><spacer type="block" width="1" height="8"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="26">
+				<td content="" csheight="26" width="630" height="26" colspan="2" valign="top" align="left" xpos="0"><a href="http://www.shadedrelief.com/"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><b>Return to Shaded Relief home</b><br>
+						</font></a></td>
+				<td width="1" height="26"><spacer type="block" width="1" height="26"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="10">
+				<td width="630" height="10" colspan="2" valign="top" align="left" xpos="0"><img height="10" width="630" src="./DEM Manipulation_files/spacer2.gif"></td>
+				<td width="1" height="10"><spacer type="block" width="1" height="10"></spacer></td>
+			</tr>
+			<tr height="1" cntrlrow="">
+				<td width="3" height="1"><spacer type="block" width="3" height="1"></spacer></td>
+				<td width="627" height="1"><spacer type="block" width="627" height="1"></spacer></td>
+				<td width="3" height="1"><spacer type="block" width="3" height="1"></spacer></td>
+				<td width="1" height="1"><spacer type="block" width="1" height="1"></spacer></td>
+				<td width="3" height="1"><spacer type="block" width="3" height="1"></spacer></td>
+				<td width="1" height="1"></td>
+			</tr>
+		</tbody></table>
+		<p></p>
+	
+
+
+
+
+
+</body></html>
